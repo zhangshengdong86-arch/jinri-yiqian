@@ -191,7 +191,7 @@
   }
 
   function swapCss(inst) {
-    var css = 'css/pages/' + ((inst && inst.cssFile) || 'index') + '.css';
+    var css = 'css/pages/' + ((inst && inst.cssFile) || 'index') + '.css?v=20261028d';
     var link = document.getElementById('pageCssLink');
     if (!link) {
       link = document.createElement('link');
