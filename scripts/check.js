@@ -25,7 +25,7 @@ function report(ok, msg) {
 function scriptsFromHtml() {
   const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
   const out = [];
-  const re = /<script src="([^"]+\.js)"><\/script>/g;
+  const re = /<script src="([^"]+?\.js)(?:\?[^"]*)?"><\/script>/g;
   let m;
   while ((m = re.exec(html)) !== null) out.push(path.join(ROOT, m[1].replace(/\//g, path.sep)));
   if (!out.length) throw new Error('index.html 中未解析到任何 script');

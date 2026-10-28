@@ -62,7 +62,7 @@ vm.createContext(sandbox);
 const htmlScripts = [];
 (function () {
   const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-  const re = /<script src="([^"]+\.js)"><\/script>/g;
+  const re = /<script src="([^"]+?\.js)(?:\?[^"]*)?"><\/script>/g;
   let m;
   while ((m = re.exec(html)) !== null) htmlScripts.push(path.join(ROOT, m[1].replace(/\//g, path.sep)));
 })();
