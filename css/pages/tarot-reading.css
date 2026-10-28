@@ -161,8 +161,8 @@
 }
 .tr-res__card { display: flex; }
 .tr-res__arch {
-  width: 80px;
-  flex: 0 0 80px;
+  width: 72px;
+  flex: 0 0 72px;
   margin-right: var(--sp-3);
   /* 卡片形：与页头、抽牌位同一套形状语言 */
 }

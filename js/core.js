@@ -476,19 +476,20 @@
       var mode = { aspectFill: 'cover', aspectFit: 'contain', scaleToFill: 'fill', widthFix: 'contain' }[p.mode] || 'cover';
       var phClass = src ? 'ph ph--img' : 'ph ph--' + (p.variant || 'auto');
       var imgHtml = src
-        ? '<img class="ph__img" style="left:' + imgInset + ';top:' + imgInset +
+        ? '<img class="ph__img" style="position:absolute;display:block;left:' + imgInset + ';top:' + imgInset +
           ';width:' + imgSize + ';height:' + imgSize + ';object-fit:' + mode + ';"' +
           ' src="' + esc(src) + '" alt=""' +
           ' onerror="if(this.parentNode)this.parentNode.className=this.parentNode.className.replace(\'ph--img\',\'ph--auto\')">'
         : '';
-      var body = '<div class="ph__body">' +
+      var body = '<div class="ph__body" style="position:absolute;left:0;top:0;right:0;bottom:0;">' +
         (p.emoji ? '<div class="ph__emoji">' + esc(p.emoji) + '</div>' :
           '<div class="ph__mark"><div class="ph__frame"><div class="ph__sun"></div><div class="ph__slash"></div></div></div>') +
         (p.name ? '<div class="ph__name">' + esc(p.name) + '</div>' : '') +
         (p.usage ? '<div class="ph__usage">' + esc(p.usage) + '</div>' : '') +
         (p.spec ? '<div class="ph__spec">' + esc(p.spec) + ' · ' + esc(p.ratio || '1:1') + '</div>' : '') +
         '</div>';
-      return '<div class="' + phClass + '" style="padding-top:' + pt + ';border-radius:' + radius + '">' +
+      return '<div class="' + phClass + '" style="position:relative;overflow:hidden;padding-top:' + pt + ';border-radius:' + radius +
+        (src ? ';background:transparent;border:none;' : '') + '">' +
         imgHtml + body + '</div>';
     },
     /** 星级（base 里的 u-star） */

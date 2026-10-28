@@ -9,8 +9,8 @@
   border-bottom: 0.5px solid var(--c-line);
 }
 .tr-arch {
-  width: 90px;
-  flex: 0 0 90px;
+  width: 80px;
+  flex: 0 0 80px;
   margin-right: var(--sp-4);
   /* 卡片形：形状交给全局 .u-cardimg（等角圆角 + 金色细描边 + 投影） */
 }

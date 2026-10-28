@@ -34,7 +34,7 @@ body {
   /* 等角圆角：四角半径一致，才是「卡片」而不是拱形/梯形 */
   border-radius: var(--r-lg);
   overflow: hidden;
-  border: 1px solid var(--c-line-strong);
+  border: 0.5px solid var(--c-line-strong);
   /* 用主题自己的卡片投影：塔罗深紫下是深色柔影，浅色类目下是暖灰柔影 */
   box-shadow: var(--card-shadow);
   background: var(--c-surface-2);
