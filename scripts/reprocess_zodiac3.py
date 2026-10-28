@@ -42,7 +42,7 @@ for fn in sorted(os.listdir(ROOT)):
         print('  skip(无金色主体):', fn)
         continue
     x0, y0, x1, y1 = bb
-    mw, mh = int((x1 - x0) * 0.08), int((y1 - y0) * 0.08)
+    mw, mh = int((x1 - x0) * 0.16), int((y1 - y0) * 0.16)
     x0, y0 = max(0, x0 - mw), max(0, y0 - mh)
     x1, y1 = min(W, x1 + mw), min(H, y1 + mh)
     side = max(x1 - x0, y1 - y0)
