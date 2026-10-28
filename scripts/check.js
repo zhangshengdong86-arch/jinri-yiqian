@@ -284,10 +284,11 @@ try {
     'links.link 塔罗格式稳定（实际: ' + linkTarot + '）');
   const linkPage = JY0.links && JY0.links.page('/pages/history/index', { cat: 'tarot' });
   report(linkPage === '/pages/history/index?cat=tarot', 'links.page 通用格式（实际: ' + linkPage + '）');
-  // 图片解析
-  report(JY0.images.resolve('tarot/tarot_card_0.webp') === 'assets/tarot/tarot_card_0.webp',
+  // 图片解析（允许带缓存版本查询串）
+  function stripQ(s) { return String(s || '').split('?')[0]; }
+  report(stripQ(JY0.images.resolve('tarot/tarot_card_0.webp')) === 'assets/tarot/tarot_card_0.webp',
     'images.resolve 塔罗路径（实际: ' + JY0.images.resolve('tarot/tarot_card_0.webp') + '）');
-  report(JY0.images.resolve('brand/brand_logo.png') === 'assets/brand/brand_logo.png',
+  report(stripQ(JY0.images.resolve('brand/brand_logo.png')) === 'assets/brand/brand_logo.png',
     'images.resolve 品牌路径（实际: ' + JY0.images.resolve('brand/brand_logo.png') + '）');
   // 每日一签：同日确定性（getToday 未抽时为 null 属正常语义，先抽再验）
   if (JY0.daily && typeof JY0.daily.getToday === 'function') {

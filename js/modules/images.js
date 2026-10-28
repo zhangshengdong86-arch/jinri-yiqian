@@ -78,6 +78,9 @@ var MAP = {
 // 转写：网页版无分包，'tarot/' 映射为 assets/tarot/（相对路径，基准是 index.html）
 var PKG_BASE = { 'tarot/': 'assets/tarot/' }
 
+// 缓存刷新戳：整批调整图片后改这个值，强制全网 CDN / 浏览器缓存失效
+var ASSET_V = '?v=20261028b'
+
 function resolve(key) {
   if (!key) return ''
   var v = MAP[key]
@@ -89,9 +92,9 @@ function resolve(key) {
     for (var p in PKG_BASE) {
       // 转写：key 自带目录前缀（如 'tarot/xxx.webp'），映射值已含 'assets/tarot/'，
       //       拼接时去掉 key 的 'tarot/' 前缀，避免重复目录
-      if (key.indexOf(p) === 0) return PKG_BASE[p] + key.slice(p.length)
+      if (key.indexOf(p) === 0) return PKG_BASE[p] + key.slice(p.length) + ASSET_V
     }
-    return 'assets/' + key    // 转写：原 '/assets/' + key → 相对路径
+    return 'assets/' + key + ASSET_V    // 转写：原 '/assets/' + key → 相对路径
   }
   return ''
 }
