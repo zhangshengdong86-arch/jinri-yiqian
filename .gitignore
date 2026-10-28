@@ -4,3 +4,5 @@ source/
 Thumbs.db
 .DS_Store
 上传到GitHub.bat
+upload.bat
+upload.log
