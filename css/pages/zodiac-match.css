@@ -1,0 +1,120 @@
+/* 星座配对页样式
+   由 source/miniprogram/pages/zodiac/match/index.wxss 转换：rpx÷2=px。
+   共享类（.gl-head*/.u-*/.sc/.cs-actions）已在全局 css。 */
+
+/* 选择区 */
+.mt-pick {
+  display: flex;
+  align-items: center;
+  margin-top: var(--sp-3);
+}
+.mt-pick__side { flex: 1; min-width: 0; }
+.mt-pick__k {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  letter-spacing: 1px;
+  margin-bottom: var(--sp-2);
+  text-align: center;
+}
+
+/* w-select：原 picker 的网页版下拉（zodiac-detail / zodiac-match 共用） */
+.w-select {
+  width: 100%;
+  height: 40px;
+  padding: 0 var(--sp-2);
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+}
+.mt-pick__box {
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  padding: var(--sp-3) var(--sp-2);
+  text-align: center;
+}
+.mt-pick__sym {
+  font-size: var(--fs-2xl);
+  color: var(--c-accent-2);
+  line-height: 1.1;
+}
+.mt-pick__nm {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-md);
+  color: var(--c-ink);
+  font-weight: var(--fw-medium);
+}
+.mt-pick__hint {
+  margin-top: 2px;
+  font-size: 10px;
+  color: var(--c-ink-3);
+}
+.mt-pick__mid {
+  width: 32px;
+  flex: 0 0 32px;
+  text-align: center;
+  font-size: var(--fs-xl);
+  color: var(--c-accent);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 结果卡 */
+.mt-res {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-4);
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+}
+.mt-res__score {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+  line-height: 1;
+  min-width: 65px;
+  text-align: center;
+  margin-right: var(--sp-4);
+}
+.mt-res__side { flex: 1; }
+.mt-res__lv {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  color: var(--c-ink);
+  letter-spacing: 1px;
+}
+.mt-res__desc {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  line-height: var(--lh-base);
+}
+
+/* 快捷组合 */
+.mt-quick { display: flex; flex-wrap: wrap; margin: 0 -4px; }
+.mt-quick__item {
+  width: calc(50% - 8px);
+  margin: 4px;
+  padding: var(--sp-3);
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.mt-quick__t {
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+}
+
+/* w-：桌面端 hover 反馈（快捷组合与交换按钮） */
+.mt-quick__item:hover { border-color: var(--c-accent); }
+.mt-pick__mid:hover { opacity: 0.75; }

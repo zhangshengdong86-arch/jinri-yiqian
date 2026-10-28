@@ -1,0 +1,148 @@
+/* 星座入口页样式
+   由 source/miniprogram/pages/zodiac/index.wxss 转换：rpx÷2=px。
+   .pg 额外补 position:relative（仅本页生效）：让 .zd-sky 星点层以页面容器为定位基准。
+   共享类（.u-*/.t-*/.cs-actions/.ph）已在全局 css。 */
+
+.pg { position: relative; }
+
+/* 星点装饰层 */
+.zd-sky {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 260px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.zd-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  opacity: 0.3;
+  animation: sg-twinkle 2.4s var(--ease-in-out) infinite;
+}
+
+/* 类目头 */
+.zd-head { padding: var(--sp-6) 0 var(--sp-4); }
+.zd-head__title {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-bold);
+  letter-spacing: 3px;
+  color: var(--c-ink);
+  line-height: 1.1;
+}
+.zd-head__en {
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--c-accent-2);
+  letter-spacing: 4px;
+}
+.zd-head__slogan {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  letter-spacing: 1px;
+}
+.zd-head__date {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  letter-spacing: 0.5px;
+}
+
+/* 今日概览卡 */
+.zd-today {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-3);
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+}
+.zd-today__img { width: 110px; flex: 0 0 110px; margin-right: var(--sp-3); }
+.zd-today__text { flex: 1; }
+.zd-today__k {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--c-ink);
+  letter-spacing: 1px;
+}
+.zd-today__v {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  line-height: var(--lh-base);
+}
+
+/* 十二星座网格 */
+.zd-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -4px;
+}
+.zd-cell {
+  width: calc(33.333% - 8px);
+  margin: 4px;
+  padding: var(--sp-3) var(--sp-2);
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  text-align: center;
+  box-sizing: border-box;
+  transition: border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.zd-cell--hover { transform: scale(0.96); }
+.zd-cell.is-active {
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 1px rgba(124, 107, 255, 0.35);
+}
+.zd-cell__icon { width: 44px; margin: 0 auto var(--sp-2); }
+.zd-cell__name {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--c-ink);
+  letter-spacing: 0.5px;
+}
+.zd-cell__range {
+  margin-top: 2px;
+  font-size: 10px;
+  color: var(--c-ink-3);
+}
+.zd-cell__el {
+  margin-top: var(--sp-2);
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: var(--r-pill);
+  font-size: 10px;
+  color: var(--c-accent-2);
+  border: 0.5px solid var(--c-line-strong);
+}
+
+/* 四元素分组 */
+.zd-ele { display: flex; flex-wrap: wrap; margin: 0 -4px; }
+.zd-ele__item {
+  width: calc(50% - 8px);
+  margin: 4px;
+  padding: var(--sp-3);
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  box-sizing: border-box;
+}
+.zd-ele__name {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--c-accent);
+  letter-spacing: 1px;
+}
+.zd-ele__list {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  line-height: var(--lh-base);
+}
+
+/* w-：桌面端 hover 反馈（原 hover-class="zd-cell--hover" 的等价） */
+.zd-cell:hover { transform: scale(0.96); }

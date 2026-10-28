@@ -1,0 +1,5 @@
+# 发布到 GitHub Pages 时忽略以下内容
+source/
+*.zip
+Thumbs.db
+.DS_Store

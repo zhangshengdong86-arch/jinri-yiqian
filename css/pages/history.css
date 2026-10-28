@@ -1,0 +1,193 @@
+/* 历史记录 —— 复用根主题的中性质感
+   由 pages/history/index.wxss 转换：rpx÷2=px；hover-class(--hover)→CSS :hover */
+.hi-head {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-5) var(--sp-4);
+  background: linear-gradient(135deg, var(--c-surface-2), var(--c-bg));
+  border: 0.5px solid var(--c-line);
+  border-radius: var(--r-lg);
+}
+
+.hi-head__num {
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--c-accent);
+  margin-right: var(--sp-4);
+  font-family: var(--font-display);
+}
+
+.hi-head__t {
+  font-size: var(--fs-md);
+  color: var(--c-ink);
+  font-weight: 600;
+}
+
+.hi-head__s {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  margin-top: 3px;
+}
+
+/* 筛选 tab */
+.hi-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--sp-4);
+}
+
+.hi-tab {
+  padding: 5px 11px;
+  margin: 0 var(--sp-2) var(--sp-2) 0;
+  border: 0.5px solid var(--c-line);
+  border-radius: 499.5px;
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  background: var(--c-surface);
+}
+
+.hi-tab.is-on {
+  color: var(--c-bg);
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  font-weight: 600;
+}
+
+.hi-tab__n {
+  font-size: 10px;
+  margin-left: 4px;
+  opacity: 0.7;
+}
+
+/* 列表 */
+.hi-list {
+  border-top: 0.5px solid var(--c-line);
+}
+
+.hi-item {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 0.5px solid var(--c-line);
+}
+
+.hi-item__main {
+  flex: 1;
+  padding: var(--sp-3) var(--sp-2) var(--sp-3) 0;
+  min-width: 0;
+}
+
+.hi-item__main:hover {
+  background: var(--c-surface-2);
+}
+
+.hi-item__top {
+  display: flex;
+  align-items: center;
+}
+
+.hi-badge {
+  font-size: var(--fs-2xs);
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--c-surface-2);
+  color: var(--c-ink-2);
+  border: 0.5px solid var(--c-line);
+}
+
+.hi-badge--divination { color: #9E2B25; border-color: rgba(158, 43, 37, 0.35); }
+.hi-badge--zodiac { color: #7C6BFF; border-color: rgba(124, 107, 255, 0.4); }
+.hi-badge--palm { color: #C96F4A; border-color: rgba(201, 111, 74, 0.4); }
+.hi-badge--tarot { color: #C9A227; border-color: rgba(201, 162, 39, 0.4); }
+
+.hi-item__time {
+  font-size: var(--fs-2xs);
+  color: var(--c-ink-3);
+  margin-left: var(--sp-2);
+}
+
+.hi-item__title {
+  font-size: var(--fs-md);
+  color: var(--c-ink);
+  margin-top: var(--sp-2);
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.hi-item__foot {
+  margin-top: var(--sp-2);
+}
+
+.hi-item__go {
+  font-size: var(--fs-xs);
+  color: var(--c-accent);
+}
+
+.hi-item__del {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--sp-3);
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  border-left: 0.5px solid var(--c-line);
+}
+
+/* 空态 */
+.hi-empty {
+  padding: var(--sp-6) var(--sp-4);
+  text-align: center;
+  border: 0.5px dashed var(--c-line);
+  border-radius: var(--r-lg);
+  background: var(--c-surface);
+}
+
+.hi-empty__mark {
+  font-size: 36px;
+  color: var(--c-line-strong);
+  line-height: 1;
+}
+
+.hi-empty__t {
+  font-size: var(--fs-md);
+  color: var(--c-ink);
+  font-weight: 600;
+  margin-top: var(--sp-3);
+}
+
+.hi-empty__s {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-3);
+  margin-top: var(--sp-2);
+  line-height: 1.6;
+}
+
+.hi-empty__cats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--sp-4);
+}
+
+.hi-empty__cat {
+  width: 46%;
+  margin: 0 2% var(--sp-3);
+  padding: var(--sp-3);
+  border: 0.5px solid var(--c-line);
+  border-radius: var(--r-md);
+  background: var(--c-surface-2);
+  text-align: left;
+}
+
+.hi-empty__cn {
+  display: block;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--c-accent);
+}
+
+.hi-empty__cd {
+  display: block;
+  font-size: var(--fs-2xs);
+  color: var(--c-ink-3);
+  margin-top: 3px;
+}

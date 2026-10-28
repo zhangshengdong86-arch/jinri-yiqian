@@ -1,0 +1,139 @@
+/* 手相首页样式 由 pages/palm/index.wxss 转换（单位 1:2，var(--x) 不动） */
+/* 手相 · 暖砂大地：中圆角、纸质卡片、柔和暖阴影、手绘感圆形图标 */
+/* w- 辅助：hover-class 改为 :hover 规则（原 hover 类 .pm-line--hover/.pm-type--hover 已在全局 base） */
+
+.pm-head {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-6) 0 var(--sp-4);
+}
+.pm-head__main { flex: 1; }
+.pm-head__title {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: 2px;
+  color: var(--c-ink);
+  line-height: 1.1;
+}
+.pm-head__en {
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--c-ink-3);
+  letter-spacing: 3px;
+}
+.pm-head__slogan {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  letter-spacing: 1px;
+}
+.pm-head__img { width: 90px; flex: 0 0 90px; margin-left: var(--sp-3); }
+
+.pm-entry { display: flex; margin: 0 -4px; }
+.pm-entry__item {
+  width: calc(50% - 8px);
+  margin: 4px;
+  padding: var(--sp-4) var(--sp-3);
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+  box-sizing: border-box;
+  text-align: center;
+}
+.pm-entry__icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto var(--sp-3);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pm-entry__icon--a { background: rgba(201, 111, 74, 0.12); }
+.pm-entry__icon--b { background: rgba(122, 139, 90, 0.14); }
+.pm-entry__name {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  color: var(--c-ink);
+  letter-spacing: 1px;
+}
+.pm-entry__desc {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  line-height: var(--lh-base);
+}
+
+.pm-lines { display: flex; flex-direction: column; }
+.pm-line {
+  display: flex;
+  padding: var(--sp-3);
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+  margin-bottom: var(--sp-3);
+}
+.pm-line__body { flex: 1; min-width: 0; }
+.pm-line__name {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  color: var(--c-accent);
+  letter-spacing: 1px;
+}
+.pm-line__domain {
+  margin-top: 2px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+}
+.pm-line__meta {
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--c-ink-3);
+}
+.pm-line__normal {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  line-height: var(--lh-base);
+}
+
+.pm-type {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--sp-3) 0;
+  border-bottom: 0.5px dashed var(--c-line);
+}
+.pm-type:last-child { border-bottom: none; }
+.pm-type__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  margin: 5px var(--sp-3) 0 0;
+  flex: 0 0 8px;
+}
+.pm-type__main { flex: 1; }
+.pm-type__name {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--c-ink);
+}
+.pm-type__feat {
+  margin-top: 2px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+}
+.pm-type__read {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  line-height: var(--lh-base);
+}
+
+/* w- 辅助：桌面端 hover 反馈（对应原 hover-class="pm-line--hover" / "pm-type--hover"） */
+.pm-line:hover { background: var(--c-surface-2); }
+.pm-type:hover { background: var(--c-surface-2); }
+.pm-line, .pm-type, .pm-entry__item, .dv-more { cursor: pointer; }

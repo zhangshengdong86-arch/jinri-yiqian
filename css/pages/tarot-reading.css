@@ -1,0 +1,246 @@
+/* 塔罗抽牌样式 由 package-tarot/pages/tarot/reading.wxss 转换（单位 1:2，var(--x) 不动） */
+/* 翻牌动画：原 .tr-card__inner（preserve-3d + transition）+ .is-flip（rotateY 180deg）
+   本就是 CSS 3D，网页版原样沿用，未引入 JS 动画实现。 */
+/* w- 辅助：textarea 去原生样式 + ::placeholder 颜色（原 placeholder-class="cs-ph"）、
+   可点击元素 cursor:pointer */
+
+.tr-ask__head { padding: var(--sp-5) 0 var(--sp-2); text-align: center; }
+.tr-ask__spread {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: 3px;
+  color: var(--c-accent);
+}
+.tr-ask__count {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  letter-spacing: 1px;
+}
+.tr-ask__desc {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+}
+.tr-ask__input {
+  width: 100%;
+  height: 90px;
+  font-size: var(--fs-md);
+  color: var(--c-ink);
+  line-height: var(--lh-loose);
+  /* w- 辅助：textarea 原生样式复位（原无边框，随卡片背景） */
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  padding: 0;
+}
+.tr-ask__input::placeholder {
+  color: var(--c-ink-3);
+  font-size: var(--fs-sm);
+}
+
+.tr-shuffle { padding: var(--sp-8) 0; text-align: center; }
+.tr-shuffle__deck {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+.tr-shuffle__card {
+  width: 60px;
+  margin: 0 -10px;
+  /* 小号卡片：等角圆角，形状同大牌，只是半径按比例收小 */
+  border-radius: var(--r-md);
+  animation: sg-float 1.1s var(--ease-in-out) infinite;
+}
+.tr-shuffle__t {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  letter-spacing: 2px;
+}
+
+.tr-pick__head { padding: var(--sp-5) 0 var(--sp-3); text-align: center; }
+.tr-pick__q {
+  font-family: var(--font-title);
+  font-size: var(--fs-lg);
+  color: var(--c-ink);
+  letter-spacing: 1px;
+}
+.tr-pick__t {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  letter-spacing: 1px;
+}
+
+/* ---------- CSS 3D 翻牌 ---------- */
+.tr-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -5px;
+}
+.tr-card {
+  width: 105px;
+  height: 140px;
+  margin: 5px;
+  perspective: 500px;
+}
+.tr-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--dur-slow) var(--ease-out);
+  transform-style: preserve-3d;
+}
+.tr-card__inner.is-flip { transform: rotateY(180deg); }
+.tr-card__back,
+.tr-card__face {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  /* 卡片形：等角圆角，正反面完全一致，翻牌时不会露角 */
+}
+.tr-card__back { background: var(--c-surface-2); }
+.tr-card__face { transform: rotateY(180deg); background: var(--c-surface); }
+.tr-card__no {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  text-align: center;
+  font-size: 10px;
+  color: var(--c-accent);
+  letter-spacing: 1px;
+}
+.tr-card__info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--sp-2);
+  background: rgba(20, 11, 34, 0.72);
+  text-align: center;
+}
+.tr-card__name {
+  font-family: var(--font-title);
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+  letter-spacing: 1px;
+}
+.tr-card__en {
+  font-size: 9px;
+  color: var(--c-ink-3);
+}
+.tr-card__rev {
+  margin-top: 2px;
+  font-size: 9px;
+  color: var(--c-accent-2);
+}
+.tr-card__rev.is-rev { color: var(--c-ink-2); }
+
+.tr-res__head { padding: var(--sp-5) 0 var(--sp-3); text-align: center; }
+.tr-res__q {
+  font-family: var(--font-title);
+  font-size: var(--fs-md);
+  color: var(--c-ink);
+  letter-spacing: 1px;
+}
+.tr-res__spread {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  letter-spacing: 1px;
+}
+.tr-res__card { display: flex; }
+.tr-res__arch {
+  width: 80px;
+  flex: 0 0 80px;
+  margin-right: var(--sp-3);
+  /* 卡片形：与页头、抽牌位同一套形状语言 */
+}
+.tr-res__main { flex: 1; min-width: 0; }
+.tr-res__name {
+  font-family: var(--font-title);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  color: var(--c-ink);
+  letter-spacing: 1px;
+}
+.tr-res__en {
+  margin-top: 1px;
+  font-size: 10px;
+  color: var(--c-ink-3);
+}
+.tr-res__rev {
+  margin-top: var(--sp-2);
+  display: inline-block;
+  font-size: var(--fs-xs);
+  color: var(--c-accent-2);
+  border: 0.5px solid var(--c-line-strong);
+  border-radius: var(--r-xs);
+  padding: 1px 6px;
+}
+.tr-res__rev.is-rev { color: var(--c-ink-2); }
+.tr-res__kw { margin-top: var(--sp-2); }
+.tr-res__kw .u-tag { margin: 0 4px 4px 0; }
+
+/* ---------- 牌面放大预览层 ---------- */
+.tr-zoom {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tr-zoom__mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(8, 4, 18, 0.86);
+}
+.tr-zoom__card {
+  position: relative;
+  z-index: 1;
+  width: 240px;
+  text-align: center;
+  animation: sg-fade-up var(--dur-base) var(--ease-out) both;
+}
+.tr-zoom__img {
+  width: 240px;
+}
+.tr-zoom__name {
+  margin-top: var(--sp-3);
+  font-family: var(--font-title);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-medium);
+  color: var(--c-ink);
+  letter-spacing: 1px;
+}
+.tr-zoom__en {
+  margin-top: 2px;
+  font-size: var(--fs-sm);
+  color: var(--c-accent);
+  letter-spacing: 1px;
+}
+.tr-zoom__pos {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+}
+
+/* w- 辅助：可点击元素指针 */
+.tr-card, .tr-res__arch, .tr-zoom { cursor: pointer; }

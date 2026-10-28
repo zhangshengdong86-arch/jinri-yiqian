@@ -1,0 +1,47 @@
+/* 卦象速查页样式
+   由 source/miniprogram/pages/divination/glossary/index.wxss 转换：rpx÷2=px。
+   共享类（.gl-head*/.gl-list*/.gl-item*/.dv-tri*/.cs-text/.cs-ph/.u-*）
+   已在全局 base，不再重复。 */
+
+/* 八卦格选中态（叠加在全局 .dv-tri__item 之上） */
+.dv-tri__item.is-on {
+  background: var(--c-surface-2);
+  border-color: var(--c-accent);
+}
+.gl-tri__h {
+  font-family: var(--font-title);
+  font-size: var(--fs-lg);
+  color: var(--c-accent);
+  letter-spacing: 1px;
+  margin-bottom: var(--sp-2);
+}
+
+/* 卦辞详情 */
+.gl-det__judge {
+  font-family: var(--font-title);
+  font-size: var(--fs-md);
+  color: var(--c-ink);
+}
+.gl-det__lv {
+  display: inline-block;
+  margin-top: var(--sp-2);
+  font-size: 10px;
+  color: var(--c-accent);
+  border: 0.5px solid var(--c-line-strong);
+  border-radius: var(--r-xs);
+  padding: 1px 5px;
+}
+.gl-det__tips { margin-top: var(--sp-2); }
+.gl-det__tip {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  line-height: var(--lh-loose);
+}
+.gl-actions { padding-bottom: var(--sp-4); }
+
+/* w-：浏览器 placeholder 样式（原 placeholder-class="cs-ph" 的等价实现） */
+input.cs-text { color: var(--c-ink); }
+input.cs-text::placeholder { color: var(--c-ink-3); font-size: var(--fs-sm); }
+
+/* w-：桌面端 hover 反馈（原可点头部没有 hover-class，这里给列表头轻度反馈） */
+.gl-item__head:hover { background: var(--c-surface-2); }

@@ -1,0 +1,45 @@
+/* 牌库图鉴样式 由 package-tarot/pages/tarot/cards/index.wxss 转换（单位 1:2，var(--x) 不动） */
+/* w- 辅助：分组/列表项 hover 反馈与指针 */
+
+.tr-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -3px;
+}
+.tr-tab {
+  margin: 3px;
+  padding: var(--sp-2) var(--sp-3);
+  border: 0.5px solid var(--c-line);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  background: var(--c-surface);
+}
+.tr-tab.is-on {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+  background: var(--c-surface-2);
+}
+.tr-det__row {
+  display: flex;
+  margin-bottom: var(--sp-2);
+}
+.tr-det__k {
+  width: 40px;
+  flex: 0 0 40px;
+  font-size: var(--fs-xs);
+  color: var(--c-accent);
+}
+.tr-det__v {
+  flex: 1;
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+  line-height: var(--lh-base);
+}
+.tr-det__kw { display: flex; flex-wrap: wrap; }
+.tr-det__kw .u-tag { margin: 0 4px 4px 0; }
+
+/* w- 辅助：桌面端 hover 反馈与指针 */
+.tr-tab { cursor: pointer; }
+.tr-tab:hover { background: var(--c-surface-2); }
+.gl-item__head { cursor: pointer; }

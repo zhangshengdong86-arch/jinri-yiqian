@@ -1,0 +1,262 @@
+/* 起卦页样式
+   由 source/miniprogram/pages/divination/cast.wxss 转换：rpx÷2=px。
+   共享类（.cs-input/.cs-ph/.cs-count/.cs-label/.cs-text/.cs-num/.cs-nums/.cs-actions/.u-*/.sc）
+   已在全局 base/ui，不再重复。 */
+
+/* 摇卦舞台 */
+.cs-stage { padding: var(--sp-5) 0; }
+.cs-stage__q {
+  font-family: var(--font-title);
+  font-size: var(--fs-lg);
+  color: var(--c-ink);
+  letter-spacing: 1px;
+  text-align: center;
+}
+.cs-stage__no {
+  margin-top: var(--sp-2);
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  letter-spacing: 2px;
+}
+
+/* 六爻视图（纯 CSS 爻线） */
+.cs-yao { margin: var(--sp-5) 0; }
+.cs-yao__row {
+  display: flex;
+  align-items: center;
+  height: 38px;
+}
+.cs-yao__no {
+  width: 40px;
+  flex: 0 0 40px;
+  font-size: 10px;
+  color: var(--c-ink-3);
+  letter-spacing: 1px;
+}
+.cs-yao__line {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 10px;
+}
+.cs-yao__seg {
+  flex: 1;
+  height: 6px;
+  background: var(--c-ink-3);
+  opacity: 0.25;
+}
+.cs-yao__line.is-yang .cs-yao__seg { background: var(--c-ink); opacity: 1; }
+.cs-yao__line.is-yin .cs-yao__seg { margin: 0 4px; }
+.cs-yao__line.is-moving .cs-yao__seg { background: var(--c-accent); opacity: 1; }
+.cs-yao__mark {
+  width: 60px;
+  flex: 0 0 60px;
+  text-align: right;
+  font-size: 10px;
+  color: var(--c-accent);
+}
+
+/* ---------------- 铜钱：外圆内方孔 ----------------
+   两面各自 rotateY，不依赖 preserve-3d（与每日一签翻页同一套稳妥写法） */
+.cs-coin {
+  display: flex;
+  justify-content: center;
+  padding: var(--sp-2) 0 var(--sp-3);
+  perspective: 450px;
+}
+.cs-coin__slot {
+  width: 66px;
+  margin: 0 var(--sp-3);
+  text-align: center;
+}
+.qz-coin {
+  position: relative;
+  width: 66px;
+  height: 66px;
+}
+.qz-coin.is-toss { animation: qz-toss .62s var(--ease-in-out) 1; }
+
+.qz-coin__face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 66px;
+  height: 66px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform .58s cubic-bezier(.42, .02, .24, 1);
+  overflow: hidden;
+}
+/* 正 = 字：刻「通寶」 */
+.qz-coin__face--front {
+  background: #C9A24A;
+  border: 1.5px solid rgba(88, 60, 18, .42);
+  box-shadow: inset 0 0 0 2.5px rgba(255, 244, 214, .38);
+  transform: rotateY(0deg);
+}
+/* 背 = 背：满文两道竖纹 */
+.qz-coin__face--back {
+  background: #B98F45;
+  border: 1.5px solid rgba(88, 60, 18, .38);
+  box-shadow: inset 0 0 0 2.5px rgba(255, 240, 205, .30);
+  transform: rotateY(180deg);
+}
+.qz-coin.is-back .qz-coin__face--front { transform: rotateY(-180deg); }
+.qz-coin.is-back .qz-coin__face--back { transform: rotateY(0deg); }
+
+/* 方孔：透空，用页面底色 */
+.qz-coin__hole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  background: var(--c-bg);
+  border: 1px solid rgba(88, 60, 18, .5);
+  border-radius: 1.5px;
+}
+.qz-coin__char {
+  position: absolute;
+  top: 50%;
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  color: #4A3410;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+.qz-coin__char--l { left: 8px; }
+.qz-coin__char--r { right: 8px; }
+
+/* 背面满文，用两道竖纹示意 */
+.qz-coin__manchu {
+  position: absolute;
+  top: 50%;
+  width: 2.5px;
+  height: 22px;
+  margin-top: -11px;
+  background: rgba(74, 52, 16, .55);
+  border-radius: 1px;
+}
+.qz-coin__manchu--l { left: 18px; }
+.qz-coin__manchu--r { right: 18px; }
+
+.cs-coin__tag {
+  margin-top: var(--sp-2);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--c-ink-2);
+}
+
+@keyframes qz-toss {
+  0%   { transform: translateY(0) rotate(0deg); }
+  30%  { transform: translateY(-13px) rotate(-8deg); }
+  62%  { transform: translateY(3px) rotate(6deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* 字背组合 → 爻象判定 */
+.cs-read {
+  margin: var(--sp-2) auto 0;
+  padding: var(--sp-2) var(--sp-4);
+  display: inline-block;
+  background: var(--c-surface-2);
+  border: 0.5px solid var(--c-line);
+  border-radius: var(--r-sm);
+  text-align: center;
+}
+.cs-read__combo {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  letter-spacing: 1px;
+}
+.cs-read__judge {
+  margin-top: 2px;
+  font-family: var(--font-title);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+  letter-spacing: 1px;
+}
+
+/* 结果头部 */
+.cs-res__head { padding: var(--sp-5) 0 var(--sp-2); text-align: center; }
+.cs-res__sub {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  letter-spacing: 1px;
+}
+.cs-res__name {
+  margin-top: var(--sp-2);
+  font-family: var(--font-title);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: 4px;
+  color: var(--c-ink);
+}
+.cs-res__meta {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--c-accent);
+  letter-spacing: 1px;
+}
+
+/* 卦画框与叠放的六爻 */
+.cs-frame {
+  position: relative;
+  padding: var(--sp-4);
+  background: var(--c-surface-2);
+  border: var(--card-border);
+}
+.cs-frame__yao {
+  position: absolute;
+  left: var(--sp-6);
+  top: var(--sp-6);
+  right: var(--sp-6);
+  bottom: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cs-frame__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 20px;
+}
+.cs-frame__line {
+  width: 62%;
+  height: 7px;
+  background: var(--c-ink);
+}
+.cs-frame__line.is-yin {
+  background: transparent;
+}
+.cs-frame__row .is-yin::before,
+.cs-frame__row .is-yin::after {
+  content: '';
+  position: absolute;
+  top: 6.5px;
+  width: 26%;
+  height: 7px;
+  background: var(--c-ink);
+}
+.cs-frame__row .is-yin::before { left: 19%; }
+.cs-frame__row .is-yin::after { right: 19%; }
+.cs-frame__mark {
+  position: absolute;
+  right: 12%;
+  font-size: var(--fs-md);
+  color: var(--c-accent);
+}
+
+/* w-：浏览器 placeholder 样式（原 placeholder-class="cs-ph" 的等价实现） */
+textarea.cs-input, input.cs-text, input.cs-num { color: var(--c-ink); }
+textarea.cs-input::placeholder,
+input.cs-text::placeholder,
+input.cs-num::placeholder { color: var(--c-ink-3); font-size: var(--fs-sm); }

@@ -1,0 +1,121 @@
+/* 卜卦入口页样式
+   由 source/miniprogram/pages/divination/index.wxss 转换：rpx÷2=px，
+   每页加载时由 core 挂载（css/pages/divination-index.css）。
+   共享类（.dv-tri* / .dv-more* / .u-* / .pg / .t-*）已在全局 base/ui/themes，不再重复。 */
+
+/* 类目头：印章 + 竖排标题 */
+.dv-head {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--sp-6) 0 var(--sp-4);
+  border-bottom: 1px solid var(--c-line-strong);
+  margin-bottom: var(--sp-3);
+}
+.dv-seal {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  background: var(--c-accent);
+  color: #FFFFFF;
+  font-family: var(--font-title);
+  font-size: var(--fs-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-xs);
+  margin-right: var(--sp-3);
+}
+.dv-head__main { flex: 1; }
+.dv-head__title {
+  font-family: var(--font-title);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: 4px;
+  color: var(--c-ink);
+  line-height: 1.1;
+}
+.dv-head__en {
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--c-ink-3);
+  letter-spacing: 2px;
+}
+.dv-head__slogan {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  letter-spacing: 1px;
+}
+.dv-head__img { width: 70px; flex: 0 0 70px; margin-left: var(--sp-3); }
+
+/* 起卦方式列表（液态果冻卡，变量来自全局 themes） */
+.dv-list { margin-top: var(--sp-2); }
+.dv-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: var(--sp-4) var(--sp-3);
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--c-surface), var(--c-surface)) padding-box,
+    linear-gradient(135deg,
+      var(--jelly-edge-a, var(--c-line-strong)),
+      var(--jelly-edge-b, var(--c-accent)),
+      var(--jelly-edge-c, var(--c-line-strong))) border-box;
+  border-radius: var(--r-xl);
+  box-shadow:
+    0 5px 14px var(--jelly-shadow, rgba(16, 20, 32, 0.14)),
+    0 0 0 3px var(--jelly-glow, var(--c-surface-2));
+  margin-bottom: var(--sp-3);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.dv-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 42%;
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  background: linear-gradient(180deg,
+    var(--jelly-gloss, rgba(255, 255, 255, 0.40)),
+    rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+.dv-item__no {
+  width: 28px;
+  flex: 0 0 28px;
+  font-family: var(--font-title);
+  font-size: var(--fs-lg);
+  color: var(--c-accent);
+  letter-spacing: 1px;
+}
+.dv-item__main { flex: 1; min-width: 0; }
+.dv-item__name {
+  font-family: var(--font-title);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--title-tracking);
+  color: var(--c-ink);
+}
+.dv-item__desc {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  line-height: var(--lh-base);
+}
+.dv-item__hint {
+  margin-top: 2px;
+  font-size: 10px;
+  color: var(--c-ink-3);
+}
+.dv-item__arrow {
+  flex: 0 0 20px;
+  text-align: right;
+  font-size: var(--fs-xl);
+  color: var(--c-ink-3);
+}
+
+/* w-：桌面端 hover 反馈（原 hover-class="dv-tri__item--hover"/"u-row--hover" 的等价） */
+.dv-tri__item:hover { background: var(--c-surface-2); }
+.u-card .u-row:hover { background: var(--c-surface-2); }

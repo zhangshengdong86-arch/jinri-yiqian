@@ -1,0 +1,183 @@
+/* 关于 —— 复用根主题的中性质感
+   由 pages/about/index.wxss 转换：rpx÷2=px；hover-class(--hover)→CSS :hover */
+.ab-brand {
+  text-align: center;
+  padding: var(--sp-5) var(--sp-4);
+  border: 0.5px solid var(--c-line);
+  border-radius: var(--r-lg);
+  background: linear-gradient(160deg, var(--c-surface-2), var(--c-bg));
+}
+
+.ab-brand__mark {
+  width: 56px;
+  height: 56px;
+  line-height: 54px;
+  margin: 0 auto;
+  border: 1px solid var(--c-accent);
+  border-radius: 50%;
+  color: var(--c-accent);
+  font-size: 26px;
+  font-family: var(--font-display);
+}
+
+.ab-brand__name {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  color: var(--c-ink);
+  margin-top: var(--sp-3);
+  font-family: var(--font-display);
+  letter-spacing: 2px;
+}
+
+.ab-brand__en {
+  font-size: var(--fs-2xs);
+  color: var(--c-ink-3);
+  letter-spacing: 3px;
+  margin-top: 4px;
+}
+
+.ab-brand__slogan {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  margin-top: var(--sp-3);
+}
+
+.ab-brand__meta {
+  font-size: var(--fs-2xs);
+  color: var(--c-ink-3);
+  margin-top: var(--sp-3);
+}
+
+.ab-para {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  line-height: 1.8;
+}
+
+.ab-kv {
+  margin-top: var(--sp-3);
+  border-top: 0.5px solid var(--c-line);
+}
+
+.ab-kv__row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--sp-2) 0;
+  border-bottom: 0.5px solid var(--c-line);
+  font-size: var(--fs-sm);
+}
+
+.ab-kv__k { color: var(--c-ink-3); }
+.ab-kv__v { color: var(--c-ink); }
+
+/* 四个类目 */
+.ab-cats {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ab-cat {
+  width: 48%;
+  margin: 0 2% var(--sp-3) 0;
+  padding: var(--sp-3);
+  border: 0.5px solid var(--c-line);
+  border-left: 3px solid var(--c-accent);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+}
+
+.ab-cat:nth-child(2n) { margin-right: 0; }
+.ab-cat:hover { background: var(--c-surface-2); }
+
+.ab-cat__n {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--c-accent);
+}
+
+.ab-cat__d {
+  font-size: var(--fs-2xs);
+  color: var(--c-ink-3);
+  margin-top: 3px;
+}
+
+.ab-cat__s {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  margin-top: var(--sp-2);
+  line-height: 1.6;
+}
+
+/* 页面地图 */
+.ab-map { margin-bottom: var(--sp-3); }
+
+.ab-map__g {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  letter-spacing: 1px;
+  padding: var(--sp-2) 0;
+}
+
+.ab-map__list {
+  border-top: 0.5px solid var(--c-line);
+}
+
+.ab-map__item {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-3) var(--sp-2);
+  border-bottom: 0.5px solid var(--c-line);
+}
+
+.ab-map__item:hover { background: var(--c-surface-2); }
+
+.ab-map__main { flex: 1; min-width: 0; }
+
+.ab-map__n {
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+}
+
+.ab-map__d {
+  font-size: var(--fs-2xs);
+  color: var(--c-ink-3);
+  margin-top: 2px;
+}
+
+.ab-map__arrow {
+  color: var(--c-ink-3);
+  font-size: var(--fs-lg);
+  padding-left: var(--sp-2);
+}
+
+/* FAQ */
+.ab-faq {
+  border-top: 0.5px solid var(--c-line);
+}
+
+.ab-faq__item {
+  padding: var(--sp-3) 0;
+  border-bottom: 0.5px solid var(--c-line);
+}
+
+.ab-faq__q {
+  display: flex;
+  align-items: flex-start;
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+}
+
+.ab-faq__qm {
+  width: 20px;
+  color: var(--c-accent);
+  font-weight: 600;
+}
+
+.ab-faq__qt { flex: 1; }
+
+.ab-faq__a {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  line-height: 1.8;
+  padding: var(--sp-2) 0 0 20px;
+}

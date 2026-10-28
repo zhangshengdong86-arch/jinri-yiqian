@@ -1,0 +1,99 @@
+/* tokens.css 由 styles/tokens.wxss 转换（rpx÷2=px） */
+/* ============================================================
+   设计令牌 · Design Tokens
+   全项目唯一的尺度来源。四个类目只覆盖「主题色/字体/形态」变量，
+   间距、字号、圆角刻度、动效时长一律复用这里的值，不允许页面自定义。
+   ============================================================ */
+:root {
+  /* ---- 间距刻度：4px 基准网格 ---- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-7: 32px;
+  --sp-8: 40px;
+
+  /* ---- 页面左右安全边距 ---- */
+  --gutter: 16px;
+
+  /* ---- 圆角刻度 ---- */
+  --r-xs: 2px;
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-pill: 499.5px;
+
+  /* ---- 字号阶梯（rpx，750 设计稿基准） ---- */
+  --fs-2xs: 10px;
+  --fs-xs: 11px;
+  --fs-sm: 13px;
+  --fs-md: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 19px;
+  --fs-2xl: 23px;
+  --fs-3xl: 28px;
+  --fs-display: 36px;
+
+  /* ---- 行高 ---- */
+  --lh-tight: 1.35;
+  --lh-base: 1.6;
+  --lh-loose: 1.85;
+
+  /* ---- 字重 ---- */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+
+  /* ---- 中性色（入口层与通用组件使用） ---- */
+  --neu-0: #FFFFFF;
+  --neu-1: #F7F8FA;
+  --neu-2: #EDEFF3;
+  --neu-3: #D8DCE3;
+  --neu-4: #A8ADB8;
+  --neu-5: #6E737D;
+  --neu-6: #3A3F49;
+  --neu-7: #1B1F27;
+
+  /* ---- 动效 ---- */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+  --dur-slow: 620ms;
+
+  /* ---- 层级阴影 ---- */
+  --sh-1: 0 1px 5px rgba(16, 20, 32, 0.06);
+  --sh-2: 0 4px 14px rgba(16, 20, 32, 0.10);
+  --sh-3: 0 8px 24px rgba(16, 20, 32, 0.16);
+
+  /* ---- 安全区 ---- */
+  --safe-bottom: env(safe-area-inset-bottom);
+  --safe-top: env(safe-area-inset-top);
+
+  /* ---- 默认主题占位（会被 .t-* 覆盖） ---- */
+  --c-bg: #0E1220;
+  --c-bg-2: #151A2C;
+  --c-surface: #FFFFFF;
+  --c-surface-2: #F5F6F8;
+  --c-ink: #1B1F27;
+  --c-ink-2: #6E737D;
+  --c-ink-3: #A8ADB8;
+  --c-accent: #C9A96E;
+  --c-accent-2: #8E6BC8;
+  --c-line: #E4E7EC;
+  --c-line-strong: #D0D5DD;
+  --radius-card: var(--r-md);
+  --card-border: 0.5px solid var(--c-line);
+  --card-shadow: var(--sh-1);
+  --font-title: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  --font-body: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  --font-display: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  /* 拉丁文配套字体：用于英文眉标/kicker，与中文标题字体形成搭配，系统栈零加载 */
+  --font-en: "Inter", "SF Pro Display", "Helvetica Neue", "Arial", sans-serif;
+  --title-tracking: 0px;
+  --card-pad: var(--sp-4);
+  --section-gap: var(--sp-5);
+}
