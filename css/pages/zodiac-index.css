@@ -99,6 +99,8 @@
   box-shadow: 0 0 0 1px rgba(124, 107, 255, 0.35);
 }
 .zd-cell__icon { width: 44px; margin: 0 auto var(--sp-2); }
+/* 视觉微调：星座线稿光学居中补偿，右移 2px */
+.zd-cell__icon .ph__img { transform: translateX(2px); }
 .zd-cell__name {
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
