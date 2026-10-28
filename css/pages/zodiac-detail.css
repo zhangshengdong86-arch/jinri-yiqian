@@ -1,0 +1,257 @@
+/* 星座详情页样式
+   由 source/miniprogram/pages/zodiac/detail.wxss 转换：rpx÷2=px。
+   含 .zc-hard（摩羯座硬朗主题），整体覆盖根节点变量，结构与布局不变。
+   共享类（.u-*/.sc/.cs-actions/.ph）已在全局 css。 */
+
+/* 主视觉 */
+.zd-hero {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-5) 0 var(--sp-4);
+}
+.zd-hero__img { width: 110px; flex: 0 0 110px; margin-right: var(--sp-4); }
+.zd-hero__main { flex: 1; min-width: 0; }
+.zd-hero__sym {
+  font-size: var(--fs-2xl);
+  color: var(--c-accent-2);
+  line-height: 1;
+}
+.zd-hero__name {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: 1.5px;
+  color: var(--c-ink);
+}
+.zd-hero__en {
+  margin-top: 2px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  letter-spacing: 0.5px;
+}
+.zd-hero__tags { margin-top: var(--sp-3); display: flex; flex-wrap: wrap; }
+.zd-hero__tags .u-tag { margin: 0 4px 4px 0; }
+
+/* 周期切换 */
+.zd-tabs {
+  display: flex;
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--r-pill);
+  padding: 3px;
+}
+.zd-tab {
+  flex: 1;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  border-radius: var(--r-pill);
+  transition: background var(--dur-fast) var(--ease-out);
+  cursor: pointer;
+}
+.zd-tab.is-on {
+  background: var(--c-accent);
+  color: #FFFFFF;
+  font-weight: var(--fw-medium);
+}
+
+/* 综合分 */
+.zd-score {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-4);
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+}
+.zd-score__num {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+  line-height: 1;
+  margin-right: var(--sp-4);
+  min-width: 60px;
+  text-align: center;
+}
+.zd-score__side { flex: 1; }
+.zd-score__k {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  letter-spacing: 1px;
+}
+.zd-score__txt {
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+  line-height: var(--lh-base);
+}
+
+/* 五个维度 */
+.zd-dim { margin-bottom: var(--sp-3); }
+.zd-dim:last-child { margin-bottom: 0; }
+.zd-dim__k {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  margin-bottom: 3px;
+}
+.zd-dim__v {
+  margin-top: 3px;
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+  line-height: var(--lh-base);
+}
+
+/* 关键词 */
+.zd-kw { display: flex; flex-wrap: wrap; }
+.zd-kw .u-tag { margin: 0 4px 4px 0; }
+
+/* 配对选择（原 picker，网页版为 select） */
+.zd-pick {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  font-size: var(--fs-md);
+  color: var(--c-ink);
+}
+.zd-pick__arrow { font-size: var(--fs-xs); color: var(--c-accent); }
+
+/* w-select：原 picker 的网页版下拉（zodiac-detail / zodiac-match 共用） */
+.w-select {
+  width: 100%;
+  height: 40px;
+  padding: 0 var(--sp-3);
+  background: var(--c-surface-2);
+  border: 0.5px solid var(--c-line-strong);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+  outline: none;
+  cursor: pointer;
+}
+
+.zd-match {
+  display: flex;
+  align-items: center;
+  padding-top: var(--sp-3);
+  border-top: 0.5px solid var(--c-line);
+}
+.zd-match__score {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  color: var(--c-accent-2);
+  line-height: 1;
+  margin-right: var(--sp-4);
+  min-width: 55px;
+  text-align: center;
+}
+.zd-match__info { flex: 1; }
+.zd-match__name {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--c-ink);
+}
+.zd-match__desc {
+  margin-top: 2px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  line-height: var(--lh-base);
+}
+.zd-match__tip {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-accent-2);
+}
+
+/* ==========================================================
+   摩羯座 · 硬朗主题（.zc-hard）
+   ----------------------------------------------------------
+   仅作用于本页根节点，不改结构、布局、字号阶梯、间距与交互：
+   只覆盖颜色变量 + 圆角 + 字重字距 + 金属描边 + 装饰纹理。
+   其余 11 个星座与全局组件不受影响。
+   ========================================================== */
+.pg.t-zodiac.zc-hard {
+  /* 深空黑 / 暗蓝重色 + 暗金 + 冷银 */
+  --c-bg: #04060E;
+  --c-bg-2: #0A1428;
+  --c-surface: rgba(198, 206, 223, 0.05);
+  --c-surface-2: rgba(198, 206, 223, 0.09);
+  --c-ink: #E8ECF6;
+  --c-ink-2: #A8B0C4;
+  --c-ink-3: #6E768C;
+  --c-accent: #D4A93C;
+  --c-accent-2: #C6CEDF;
+  --c-line: rgba(198, 206, 223, 0.16);
+  --c-line-strong: rgba(212, 169, 60, 0.45);
+  /* 棱角：圆角收窄（14px → 4px），阴影更重 */
+  --radius-card: 4px;
+  --card-border: 0.5px solid var(--c-line);
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+  --title-tracking: 3px;
+  /* 装饰：顶部暗金辉光 + 斜向几何切割纹理（纯背景层，不加结构） */
+  background-image:
+    radial-gradient(120% 78% at 50% 0%, rgba(212, 169, 60, 0.10) 0%, rgba(4, 6, 14, 0) 62%),
+    repeating-linear-gradient(135deg, rgba(198, 206, 223, 0.045) 0 1px, rgba(0, 0, 0, 0) 1px 8px);
+}
+
+/* 主视觉区：一道锐利斜切星轨光 */
+.zc-hard .zd-hero {
+  background-image: linear-gradient(115deg,
+    rgba(0, 0, 0, 0) 38%,
+    rgba(212, 169, 60, 0.10) 50%,
+    rgba(0, 0, 0, 0) 62%);
+}
+
+/* 标题：加粗 + 拉大字距 + 金属描边（字号不变） */
+.zc-hard .zd-hero__name {
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.85), 0 0 12px rgba(212, 169, 60, 0.32);
+}
+.zc-hard .zd-hero__sym {
+  text-shadow: 0 0 10px rgba(212, 169, 60, 0.45);
+}
+.zc-hard .zd-hero__en {
+  letter-spacing: 2px;
+  color: var(--c-accent-2);
+}
+
+/* 卡片：斜切纹理 + 左侧金线，营造切割与压迫感 */
+.zc-hard .u-card,
+.zc-hard .zd-score {
+  background-image: repeating-linear-gradient(135deg,
+    rgba(198, 206, 223, 0.035) 0 1px,
+    rgba(0, 0, 0, 0) 1px 9px);
+  border-left: 1px solid rgba(212, 169, 60, 0.55);
+}
+
+/* 数字：金属描边，强化立体 */
+.zc-hard .zd-score__num,
+.zc-hard .zd-match__score {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8), 0 0 14px rgba(212, 169, 60, 0.28);
+}
+
+/* 标签 / 周期切换 / 按钮：直角化 + 硬朗字距 */
+.zc-hard .u-tag {
+  border-radius: 0;
+  letter-spacing: 1px;
+}
+.zc-hard .zd-tabs { border-radius: 2px; }
+.zc-hard .zd-tab {
+  border-radius: 2px;
+  letter-spacing: 1px;
+}
+.zc-hard .zd-tab.is-on { font-weight: 600; }
+.zc-hard .u-btn {
+  border-radius: 2px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* 分隔线：金属冷银 */
+.zc-hard .zd-match { border-top-color: var(--c-line-strong); }
+
+/* w-：桌面端 hover 反馈（周期 tab 可点，给轻度悬停态） */
+.zd-tab:hover { background: var(--c-surface-2); }

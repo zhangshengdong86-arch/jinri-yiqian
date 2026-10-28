@@ -1,0 +1,158 @@
+/* themes.css 由 styles/themes.wxss 转换 */
+/* ============================================================
+   四类目主题变量
+   规则：只覆盖「色 / 字体 / 形态」三类变量，
+   间距、字号、动效一律不动 —— 这是「差异明显但不割裂」的关键。
+   ============================================================ */
+
+/* ---------- 1. 卜卦：水墨宣纸 ----------
+   调性：东方、克制、留白、方正
+   形态语言：极小圆角 + 细描边 + 无阴影 + 衬线标题 + 竖排标签 */
+.t-divination {
+  --c-bg: #F3EFE6;
+  --c-bg-2: #EDE7DA;
+  --c-surface: #FCFAF5;
+  --c-surface-2: #F5F1E8;
+  --c-ink: #23201C;
+  --c-ink-2: #6B6459;
+  --c-ink-3: #A29A8C;
+  --c-accent: #9E2B25;
+  --c-accent-2: #C8A96A;
+  --c-line: #DDD5C6;
+  --c-line-strong: #C8BCA6;
+  --jelly-edge-a: #B8A98E;
+  --jelly-edge-b: #C8BCA6;
+  --jelly-edge-c: #D9CDB6;
+  --jelly-gloss: rgba(255, 255, 255, 0.40);
+  --jelly-shadow: rgba(16, 20, 32, 0.12);
+  --jelly-glow: rgba(158, 43, 37, 0.10);
+  --radius-card: 2px;
+  --card-border: 0.5px solid var(--c-line-strong);
+  --card-shadow: none;
+  --font-title: "Songti SC", "STSong", "SimSun", serif;
+  --font-body: "PingFang SC", "Helvetica Neue", sans-serif;
+  --font-display: "Songti SC", "STSong", "SimSun", serif;
+  --title-tracking: 2px;
+  --card-pad: var(--sp-5);
+  --section-gap: var(--sp-6);
+}
+
+/* ---------- 2. 星座：星夜极光 ----------
+   调性：科技感、通透、发光
+   形态语言：大圆角 + 玻璃态半透明 + 发光描边 + 无衬线 + 数字大字号 */
+.t-zodiac {
+  --c-bg: #0B1026;
+  --c-bg-2: #121836;
+  --c-surface: rgba(255, 255, 255, 0.06);
+  --c-surface-2: rgba(255, 255, 255, 0.10);
+  --c-ink: #EAF0FF;
+  --c-ink-2: #9AA6C8;
+  --c-ink-3: #6B769C;
+  --c-accent: #7C6BFF;
+  --c-accent-2: #38E1D0;
+  --c-line: rgba(255, 255, 255, 0.12);
+  --c-line-strong: rgba(124, 107, 255, 0.42);
+  --jelly-edge-a: #5E3FB0;
+  --jelly-edge-b: #7C6BFF;
+  --jelly-edge-c: #38E1D0;
+  --jelly-gloss: rgba(255, 255, 255, 0.30);
+  --jelly-shadow: rgba(4, 8, 26, 0.55);
+  --jelly-glow: rgba(124, 107, 255, 0.22);
+  --radius-card: 14px;
+  --card-border: 0.5px solid var(--c-line);
+  --card-shadow: 0 4px 16px rgba(4, 8, 26, 0.45);
+  --font-title: "PingFang SC", "Helvetica Neue", sans-serif;
+  --font-body: "PingFang SC", "Helvetica Neue", sans-serif;
+  --font-display: "PingFang SC", "Helvetica Neue", sans-serif;
+  --title-tracking: 0.5px;
+  --card-pad: var(--sp-4);
+  --section-gap: var(--sp-4);
+}
+
+/* ---------- 3. 手相：暖砂大地 ----------
+   调性：温润、手作、亲和
+   形态语言：中圆角 + 纸质卡片 + 柔和暖阴影 + 圆润无衬线 + 手绘插画感 */
+.t-palm {
+  --c-bg: #FAF3EC;
+  --c-bg-2: #F2E6D8;
+  --c-surface: #FFFFFF;
+  --c-surface-2: #FBF4EE;
+  --c-ink: #3B2A20;
+  --c-ink-2: #8A6E5A;
+  --c-ink-3: #B2977F;
+  --c-accent: #C96F4A;
+  --c-accent-2: #7A8B5A;
+  --c-line: #EADCCB;
+  --c-line-strong: #DCC7AF;
+  --jelly-edge-a: #CDB494;
+  --jelly-edge-b: #DCC7AF;
+  --jelly-edge-c: #EADCCB;
+  --jelly-gloss: rgba(255, 255, 255, 0.42);
+  --jelly-shadow: rgba(120, 82, 54, 0.16);
+  --jelly-glow: rgba(201, 111, 74, 0.12);
+  --radius-card: 10px;
+  --card-border: 0.5px solid var(--c-line);
+  --card-shadow: 0 3px 10px rgba(120, 82, 54, 0.10);
+  --font-title: "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --font-body: "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --font-display: "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --title-tracking: 0.5px;
+  --card-pad: var(--sp-4);
+  --section-gap: var(--sp-4);
+}
+
+/* ---------- 4. 塔罗：深紫鎏金 ----------
+   调性：神秘、仪式、古典
+   形态语言：等角圆角卡片牌框 + 金色细描边 + 对称装饰 + 衬线英文 + 翻牌动效 */
+.t-tarot {
+  --c-bg: #140B22;
+  --c-bg-2: #1F1433;
+  --c-surface: #241740;
+  --c-surface-2: #2E1D50;
+  --c-ink: #F0E6D2;
+  --c-ink-2: #B9A98C;
+  --c-ink-3: #7E6E58;
+  --c-accent: #C9A227;
+  --c-accent-2: #8E6BC8;
+  --c-line: rgba(201, 162, 39, 0.28);
+  --c-line-strong: rgba(201, 162, 39, 0.55);
+  --jelly-edge-a: #A8841F;
+  --jelly-edge-b: #C9A227;
+  --jelly-edge-c: #E0C064;
+  --jelly-gloss: rgba(255, 255, 255, 0.26);
+  --jelly-shadow: rgba(8, 4, 18, 0.60);
+  --jelly-glow: rgba(201, 162, 39, 0.16);
+  --radius-card: 8px;
+  --card-border: 0.5px solid var(--c-line);
+  --card-shadow: 0 5px 18px rgba(8, 4, 18, 0.55);
+  --font-title: "Songti SC", "Times New Roman", serif;
+  --font-body: "PingFang SC", "Helvetica Neue", sans-serif;
+  --font-display: "Songti SC", "Times New Roman", serif;
+  --title-tracking: 1px;
+  --card-pad: var(--sp-4);
+  --section-gap: var(--sp-5);
+}
+
+/* ---------- 入口层：深空中性底 ---------- */
+.t-root {
+  --c-bg: #0E1220;
+  --c-bg-2: #151A2C;
+  --c-surface: rgba(255, 255, 255, 0.05);
+  --c-surface-2: rgba(255, 255, 255, 0.09);
+  --c-ink: #EEF1F8;
+  --c-ink-2: #98A0B4;
+  --c-ink-3: #656D82;
+  --c-accent: #C9A96E;
+  --c-accent-2: #8E6BC8;
+  --c-line: rgba(255, 255, 255, 0.10);
+  --c-line-strong: rgba(255, 255, 255, 0.20);
+  --jelly-edge-a: rgba(142, 107, 200, 0.55);
+  --jelly-edge-b: #C9A96E;
+  --jelly-edge-c: rgba(142, 107, 200, 0.55);
+  --jelly-gloss: rgba(255, 255, 255, 0.18);
+  --jelly-shadow: rgba(4, 8, 20, 0.55);
+  --jelly-glow: rgba(142, 107, 200, 0.14);
+  --radius-card: 12px;
+  --card-border: 0.5px solid var(--c-line);
+  --card-shadow: 0 4px 14px rgba(4, 8, 20, 0.40);
+}

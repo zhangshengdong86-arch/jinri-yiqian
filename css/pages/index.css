@@ -1,0 +1,476 @@
+/* 首页样式 由 pages/index/index.wxss 转换 */
+/* 入口层：深空中性底，四个类目卡各自挂载 t-* 主题类做风格预览 */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-5) 0 var(--sp-3);
+}
+.hero__mark { width: 44px; flex: 0 0 44px; margin-right: var(--sp-3); }
+.hero__text { flex: 1; }
+.hero__name {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: 2px;
+  color: var(--c-ink);
+  line-height: 1.2;
+}
+.hero__slogan {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  letter-spacing: 1px;
+}
+.hero__date {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  text-align: right;
+}
+
+/* ============================================================
+   四个类目封面 · 入口层
+   ------------------------------------------------------------
+   统一：同一套圆角 / 阴影 / 内高光 / 磨砂 chip / 文本层级，
+        四个封面作为「一组」呈现（圆角不再随主题在 4~14px 间跳动）。
+   差异：每个封面一套独立的纯 CSS 渐变 + 几何 / 微插画装饰，
+        零图片、零网络字体，全部由渐变与伪元素绘制。
+   ============================================================ */
+.cats {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -5px;
+}
+
+/* ---------- 统一骨架 ---------- */
+.cat {
+  --cover-radius: 12px;
+  --cover-line: rgba(255, 255, 255, 0.14);
+  --cover-glass: rgba(255, 255, 255, 0.16);
+  --cover-glass-line: rgba(255, 255, 255, 0.26);
+  --cover-chip-bg: rgba(255, 255, 255, 0.14);
+  --cover-chip-line: rgba(255, 255, 255, 0.22);
+  --cover-inner: rgba(255, 255, 255, 0.10);
+
+  position: relative;
+  width: calc(50% - 10px);
+  margin: 5px;
+  min-height: 171px;
+  padding: var(--sp-4) var(--sp-3) var(--sp-3);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 0.5px solid var(--cover-line);
+  border-radius: var(--cover-radius);
+  background-color: var(--c-surface);
+  box-shadow:
+    inset 0 0.5px 0 var(--cover-inner),
+    0 1px 4px rgba(8, 12, 24, 0.16),
+    0 7px 17px rgba(8, 12, 24, 0.22);
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* 入场动画结束即交还 transform 控制权：
+   u-anim-up 的 fill-mode:both 会锁死 transform，导致 hover 位移失效 */
+.cat.u-anim-up { animation-fill-mode: backwards; }
+
+/* 装饰层压在内容之下，避免盖住文字 */
+.cat::before, .cat::after { z-index: 0; }
+.cat__icon, .cat__main, .cat__tag { position: relative; z-index: 1; }
+
+/* ---------- 交互：悬停抬起 / 按下回弹 ---------- */
+.cat:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 0.5px 0 var(--cover-inner),
+    0 3px 8px rgba(8, 12, 24, 0.20),
+    0 11px 24px rgba(8, 12, 24, 0.28);
+}
+.cat.cat--hover { transform: scale(0.978); }
+
+/* ---------- 图标徽标：隐去占位虚线与标注，做成统一圆角徽底 ---------- */
+.cat__icon {
+  width: 42px;
+  flex: 0 0 auto;
+  margin-bottom: var(--sp-3);
+}
+.cat__icon .ph:not(.ph--img) {
+  border: 0.5px solid var(--cover-chip-line);
+  background: var(--cover-chip-bg);
+}
+.cat__icon .ph__name,
+.cat__icon .ph__usage,
+.cat__icon .ph__spec { display: none; }
+.cat__icon .ph__emoji {
+  font-size: 21px;
+  margin-bottom: 0;
+  opacity: 1;
+}
+
+/* ---------- 文本层级：眉标 / 标题 / 一句话 / 元信息 / 磨砂chip ---------- */
+.cat__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.cat__en {
+  order: 1;
+  font-family: var(--font-en);
+  font-size: 9px;
+  font-weight: var(--fw-medium);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  line-height: 1.4;
+}
+.cat__name {
+  order: 2;
+  margin-top: 3px;
+  font-family: var(--font-title);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--title-tracking);
+  color: var(--c-ink);
+  line-height: 1.15;
+}
+.cat__pitch {
+  order: 3;
+  margin-top: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+  line-height: 1.6;
+  opacity: 0.88;
+}
+.cat__desc {
+  order: 4;
+  margin-top: var(--sp-2);
+  font-size: 9px;
+  color: var(--c-ink-2);
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+.cat__tag {
+  order: 5;
+  margin-top: var(--sp-3);
+  align-self: flex-start;
+  padding: 3px 8px;
+  border-radius: var(--r-pill);
+  font-size: 9.5px;
+  letter-spacing: 1px;
+  color: var(--c-ink-2);
+  background: var(--cover-glass);
+  border: 0.5px solid var(--cover-glass-line);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* ---------- 1. 卜卦 · 水墨宣纸：宣纸颗粒 + 朱砂爻线 + 方章 ---------- */
+.cat.t-divination {
+  --cover-line: rgba(35, 32, 28, 0.14);
+  --cover-glass: rgba(255, 255, 255, 0.66);
+  --cover-glass-line: rgba(35, 32, 28, 0.14);
+  --cover-chip-bg: rgba(158, 43, 37, 0.08);
+  --cover-chip-line: rgba(158, 43, 37, 0.24);
+  --cover-inner: rgba(255, 255, 255, 0.90);
+  background-image:
+    radial-gradient(rgba(35, 32, 28, 0.05) 0.5px, transparent 0.8px),
+    radial-gradient(ellipse at 84% 12%, rgba(158, 43, 37, 0.10), transparent 48%),
+    linear-gradient(158deg, #FDFBF6 0%, #F6F0E4 52%, #EBE1CE 100%);
+  background-size: 3.5px 3.5px, auto, auto;
+  background-repeat: repeat, no-repeat, no-repeat;
+}
+.cat.t-divination::before {
+  content: '';
+  position: absolute;
+  right: 12px; top: 14px;
+  width: 34px; height: 21px;
+  background-image: repeating-linear-gradient(180deg,
+    rgba(158, 43, 37, 0.5) 0 2.5px,
+    transparent 2.5px 8px);
+}
+.cat.t-divination::after {
+  content: '';
+  position: absolute;
+  right: -11px; bottom: -12px;
+  width: 66px; height: 66px;
+  border: 1.5px solid rgba(158, 43, 37, 0.15);
+  border-radius: 3px;
+  transform: rotate(14deg);
+}
+
+/* ---------- 2. 星座 · 星夜极光：极光 + 星点 + 星轨环 ---------- */
+.cat.t-zodiac {
+  --cover-line: rgba(124, 107, 255, 0.28);
+  --cover-glass: rgba(255, 255, 255, 0.12);
+  --cover-glass-line: rgba(124, 107, 255, 0.35);
+  --cover-chip-bg: rgba(124, 107, 255, 0.18);
+  --cover-chip-line: rgba(124, 107, 255, 0.40);
+  --cover-inner: rgba(255, 255, 255, 0.12);
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.50) 0.5px, transparent 0.9px),
+    radial-gradient(ellipse at 16% 6%, rgba(124, 107, 255, 0.38), transparent 60%),
+    radial-gradient(ellipse at 90% 84%, rgba(56, 225, 208, 0.20), transparent 58%),
+    linear-gradient(162deg, #151B48 0%, #0B1026 58%, #080C1C 100%);
+  background-size: 12px 12px, auto, auto, auto;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+}
+.cat.t-zodiac::before {
+  content: '';
+  position: absolute;
+  right: -26px; top: -23px;
+  width: 104px; height: 104px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(124, 107, 255, 0.42);
+  box-shadow: inset 0 0 0 10px rgba(124, 107, 255, 0.05);
+}
+.cat.t-zodiac::after {
+  content: '';
+  position: absolute;
+  right: 15px; top: 28px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #38E1D0;
+  box-shadow: 0 0 8px 2px rgba(56, 225, 208, 0.50);
+  animation: sg-twinkle 3.6s var(--ease-in-out) infinite;
+}
+
+/* ---------- 3. 手相 · 暖砂大地：砂粒 + 掌丘暖光 + 两道掌纹弧 ---------- */
+.cat.t-palm {
+  --cover-line: rgba(120, 82, 54, 0.16);
+  --cover-glass: rgba(255, 255, 255, 0.62);
+  --cover-glass-line: rgba(120, 82, 54, 0.18);
+  --cover-chip-bg: rgba(201, 111, 74, 0.12);
+  --cover-chip-line: rgba(201, 111, 74, 0.28);
+  --cover-inner: rgba(255, 255, 255, 0.85);
+  background-image:
+    radial-gradient(rgba(120, 82, 54, 0.055) 0.5px, transparent 0.8px),
+    radial-gradient(ellipse at 88% 10%, rgba(201, 111, 74, 0.20), transparent 54%),
+    linear-gradient(155deg, #FFFAF4 0%, #F8ECDD 54%, #F0DDC8 100%);
+  background-size: 3.5px 3.5px, auto, auto;
+  background-repeat: repeat, no-repeat, no-repeat;
+}
+.cat.t-palm::before {
+  content: '';
+  position: absolute;
+  right: 8px; top: 17px;
+  width: 66px; height: 66px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: rgba(201, 111, 74, 0.42);
+  transform: rotate(-18deg);
+}
+.cat.t-palm::after {
+  content: '';
+  position: absolute;
+  right: 27px; top: 46px;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: rgba(122, 139, 90, 0.40);
+  transform: rotate(14deg);
+}
+
+/* ---------- 4. 塔罗 · 深紫鎏金：金砂 + 拱形牌框 + 星芒 ---------- */
+.cat.t-tarot {
+  --cover-line: rgba(201, 162, 39, 0.26);
+  --cover-glass: rgba(255, 255, 255, 0.10);
+  --cover-glass-line: rgba(201, 162, 39, 0.34);
+  --cover-chip-bg: rgba(201, 162, 39, 0.16);
+  --cover-chip-line: rgba(201, 162, 39, 0.38);
+  --cover-inner: rgba(255, 255, 255, 0.10);
+  background-image:
+    radial-gradient(rgba(201, 162, 39, 0.18) 0.5px, transparent 0.8px),
+    radial-gradient(ellipse at 76% 8%, rgba(201, 162, 39, 0.26), transparent 58%),
+    linear-gradient(160deg, #2A1B4A 0%, #1C1033 56%, #150C26 100%);
+  background-size: 4px 4px, auto, auto;
+  background-repeat: repeat, no-repeat, no-repeat;
+}
+.cat.t-tarot::before {
+  content: '';
+  position: absolute;
+  right: 13px; top: 11px;
+  width: 46px; height: 64px;
+  border-radius: 499.5px 499.5px 4px 4px;
+  border: 0.5px solid rgba(201, 162, 39, 0.50);
+  box-shadow: inset 0 0 12px rgba(201, 162, 39, 0.12);
+}
+.cat.t-tarot::after {
+  content: '';
+  position: absolute;
+  right: 31px; top: 16px;
+  width: 14px; height: 14px;
+  background-image:
+    linear-gradient(90deg, transparent 44%, rgba(243, 226, 168, 0.95) 44% 56%, transparent 56%),
+    linear-gradient(180deg, transparent 44%, rgba(243, 226, 168, 0.95) 44% 56%, transparent 56%);
+  filter: drop-shadow(0 0 3px rgba(201, 162, 39, 0.75));
+  animation: sg-pulse 3.2s var(--ease-in-out) infinite;
+}
+
+/* ---------- 宽屏（微信 PC / 大屏模拟器）：内容限宽 + 四列 + px 排版 ---------- */
+@media (min-width: 700px) {
+  .pg__inner {
+    max-width: 1040px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 24px;
+  }
+  .cats { margin: 0 -8px; }
+  .cat {
+    width: calc(25% - 16px);
+    margin: 8px;
+    min-height: 268px;
+    padding: 22px 20px 18px;
+    border-radius: 14px;
+  }
+  .cat__icon { width: 40px; margin-bottom: 14px; }
+  .cat__icon .ph__emoji { font-size: 20px; }
+  .cat__en { font-size: 10px; letter-spacing: 1.6px; }
+  .cat__name { font-size: 24px; margin-top: 4px; }
+  .cat__pitch { font-size: 13px; margin-top: 8px; }
+  .cat__desc { font-size: 11px; margin-top: 8px; }
+  .cat__tag { font-size: 11px; padding: 3px 10px; margin-top: 12px; }
+  .cat.t-divination::before { width: 44px; height: 28px; }
+  .cat.t-divination::after { width: 88px; height: 88px; }
+  .cat.t-zodiac::before { width: 128px; height: 128px; }
+  .cat.t-zodiac::after { width: 9px; height: 9px; }
+  .cat.t-palm::before { width: 86px; height: 86px; }
+  .cat.t-palm::after { width: 62px; height: 62px; }
+  .cat.t-tarot::before { width: 58px; height: 82px; }
+  .cat.t-tarot::after { width: 18px; height: 18px; }
+}
+
+.rec__l { flex: 1; min-width: 0; }
+.rec__cat {
+  font-size: 10px;
+  color: var(--c-accent);
+  letter-spacing: 0.5px;
+}
+.rec__title {
+  margin-top: 2px;
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rec__time {
+  font-size: 10px;
+  color: var(--c-ink-3);
+  flex: 0 0 auto;
+}
+
+.foot { margin-top: var(--sp-7); }
+.foot__links {
+  margin-top: var(--sp-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.foot__link {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  padding: 0 var(--sp-2);
+}
+.foot__dot { font-size: var(--fs-xs); color: var(--c-ink-3); }
+
+/* 每日一签入口卡 */
+.daily-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-4);
+  background: linear-gradient(135deg, #1A2138, #0F1424);
+  border: 0.5px solid rgba(201, 169, 110, 0.5);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-2);
+}
+.daily-card--hover { opacity: 0.92; }
+.daily-card__label {
+  font-size: var(--fs-2xs);
+  color: var(--c-accent);
+  letter-spacing: 2px;
+}
+.daily-card__main {
+  font-size: var(--fs-lg);
+  color: #fff;
+  font-weight: var(--fw-bold);
+  margin-top: var(--sp-1);
+}
+.daily-card__sub {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  margin-top: 3px;
+}
+.daily-card__r {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.daily-card__emoji {
+  font-size: 28px;
+}
+.daily-card__go {
+  color: var(--c-accent);
+  font-size: var(--fs-xl);
+  margin-top: var(--sp-1);
+}
+
+/* ---------- 打卡条：连续天数 + 签文日历入口 ---------- */
+.hm-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--c-surface);
+  border: 0.5px solid var(--c-line);
+  border-left: 3px solid var(--c-accent);
+  border-radius: var(--r-md);
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.hm-check--hover { opacity: .72; }
+.hm-check__l { flex: 1; min-width: 0; }
+.hm-check__n {
+  display: flex;
+  align-items: baseline;
+}
+.hm-check__num {
+  font-family: var(--font-title);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+  line-height: 1;
+}
+.hm-check__unit {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  margin-left: 2px;
+}
+.hm-check__tip {
+  font-size: var(--fs-xs);
+  color: var(--c-accent);
+  margin-left: var(--sp-2);
+  padding: 1px 6px;
+  border: 0.5px solid var(--c-accent);
+  border-radius: var(--r-pill);
+}
+.hm-check__t {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+}
+.hm-check__r {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  margin-left: var(--sp-3);
+}
+.hm-check__cal {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+}
+.hm-check__go {
+  color: var(--c-accent);
+  font-size: var(--fs-lg);
+  margin-left: var(--sp-1);
+}

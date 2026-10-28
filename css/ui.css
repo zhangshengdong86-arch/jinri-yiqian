@@ -1,0 +1,191 @@
+/* ============================================================
+   ui.css · 网页专属壳（导航栏 / 弹层 / 通用）
+   主题色一律走 themes.css 的变量，切换 body 上的 t-* 类自动换肤
+   ============================================================ */
+
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+}
+button { font-family: inherit; }
+img { display: block; }
+
+/* ---------- 顶部导航栏（对应小程序原生导航栏） ---------- */
+.w-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding-top: env(safe-area-inset-top);
+  background: var(--c-bg);
+  color: var(--c-ink);
+  border-bottom: 1px solid var(--c-line);
+  transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+.w-nav--transparent { background: transparent; border-bottom: none; }
+.w-nav__back {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: none;
+  color: var(--c-ink);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  display: none;
+}
+.w-nav--has-back .w-nav__back { display: block; }
+.w-nav__title {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  font-weight: var(--fw-medium);
+  letter-spacing: 1px;
+  padding-right: 44px;   /* 与返回键对称，保持标题居中 */
+}
+.w-nav--has-back .w-nav__title { padding-right: 0; }
+.w-nav__spacer { flex: 0 0 44px; width: 44px; }
+
+/* 页面内容避让固定导航栏 */
+.pg { padding-top: 44px; }
+main#app { min-height: 100vh; }
+
+/* ---------- Toast ---------- */
+.w-ui { position: fixed; inset: 0; pointer-events: none; z-index: 999; }
+.w-toast {
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  background: rgba(17, 20, 30, 0.86);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 10px 18px;
+  border-radius: 8px;
+  max-width: 76%;
+  text-align: center;
+  animation: w-fade-in .2s ease-out both;
+  pointer-events: none;
+}
+@keyframes w-fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------- Loading ---------- */
+.w-loading {
+  position: fixed;
+  left: 50%; top: 45%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+.w-loading__spin {
+  width: 32px; height: 32px;
+  border: 3px solid var(--c-line);
+  border-top-color: var(--c-accent);
+  border-radius: 50%;
+  animation: w-spin .8s linear infinite;
+}
+@keyframes w-spin { to { transform: rotate(360deg); } }
+.w-loading__text { margin-top: 10px; font-size: 12px; color: var(--c-ink-2); }
+
+/* ---------- Modal ---------- */
+.w-modal {
+  position: fixed; inset: 0;
+  background: rgba(8, 10, 18, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: auto;
+}
+.w-modal__panel {
+  width: 280px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-line-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--sh-3);
+}
+.w-modal__title {
+  padding: 18px 20px 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: var(--fw-bold);
+  color: var(--c-ink);
+}
+.w-modal__content {
+  padding: 12px 20px 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--c-ink-2);
+  text-align: center;
+}
+.w-modal__btns {
+  display: flex;
+  border-top: 1px solid var(--c-line);
+}
+.w-modal__btn {
+  flex: 1;
+  height: 46px;
+  border: none;
+  background: none;
+  font-size: 15px;
+  color: var(--c-ink);
+  cursor: pointer;
+}
+.w-modal__btn + .w-modal__btn { border-left: 1px solid var(--c-line); }
+.w-modal__btn--confirm { color: var(--c-accent); font-weight: var(--fw-medium); }
+
+/* ---------- ActionSheet ---------- */
+.w-sheet {
+  position: fixed; inset: 0;
+  background: rgba(8, 10, 18, 0.5);
+  z-index: 1000;
+  pointer-events: auto;
+}
+.w-sheet__panel {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background: var(--c-bg-2);
+  border-radius: 14px 14px 0 0;
+  padding: 8px 10px calc(10px + env(safe-area-inset-bottom));
+  animation: w-up .22s var(--ease-out) both;
+}
+@keyframes w-up { from { transform: translateY(40%); } to { transform: translateY(0); } }
+.w-sheet__item {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: var(--c-ink);
+  background: var(--c-surface);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.w-sheet__item + .w-sheet__item { margin-top: 8px; }
+.w-sheet__cancel { background: transparent; color: var(--c-ink-3); }
+
+/* ---------- ph-img 回落的占位态 ---------- */
+.ph--auto {
+  background: var(--c-surface-2);
+  border: 1px dashed var(--c-line-strong);
+}
+.ph--img .ph__body { display: none; }
+
+/* ---------- 图鉴/列表 hover 桌面反馈 ---------- */
+@media (hover: hover) {
+  .u-row:hover, .dv-more:hover, .dv-tri__item:hover { background: var(--c-surface-2); }
+  .u-btn--primary:hover { opacity: 0.88; }
+}
+
+/* ---------- 宽屏限宽 ---------- */
+@media (min-width: 700px) {
+  .pg__inner { max-width: 480px; margin: 0 auto; }
+}

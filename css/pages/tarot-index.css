@@ -1,0 +1,119 @@
+/* 塔罗首页样式 由 package-tarot/pages/tarot/index.wxss 转换（单位 1:2，var(--x) 不动） */
+/* 塔罗 · 深紫鎏金：卡片牌框、金色细描边、对称装饰、衬线英文 */
+/* w- 辅助：.tr-sp 桌面端 hover 反馈与指针 */
+
+.tr-head {
+  display: flex;
+  align-items: flex-end;
+  padding: var(--sp-6) 0 var(--sp-4);
+  border-bottom: 0.5px solid var(--c-line);
+}
+.tr-arch {
+  width: 90px;
+  flex: 0 0 90px;
+  margin-right: var(--sp-4);
+  /* 卡片形：形状交给全局 .u-cardimg（等角圆角 + 金色细描边 + 投影） */
+}
+.tr-head__main { flex: 1; padding-bottom: var(--sp-2); }
+.tr-head__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: 4px;
+  color: var(--c-accent);
+  line-height: 1.1;
+}
+.tr-head__en {
+  margin-top: 3px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  color: var(--c-ink-3);
+  letter-spacing: 5px;
+}
+.tr-head__slogan {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  letter-spacing: 1px;
+}
+
+.tr-rule {
+  padding: var(--sp-3);
+  border: 0.5px solid var(--c-line);
+  border-radius: var(--r-sm);
+  background: var(--c-surface);
+}
+.tr-rule__t {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  line-height: var(--lh-base);
+  letter-spacing: 0.5px;
+}
+
+.tr-sp {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-4) var(--sp-3);
+  background: var(--c-surface);
+  border: var(--card-border);
+  border-radius: var(--radius-card);
+  margin-bottom: var(--sp-3);
+  box-shadow: var(--card-shadow);
+}
+.tr-sp__left {
+  width: 48px;
+  flex: 0 0 48px;
+  text-align: center;
+  border-right: 0.5px solid var(--c-line);
+  margin-right: var(--sp-3);
+}
+.tr-sp__count {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+  line-height: 1;
+}
+.tr-sp__unit {
+  font-size: 10px;
+  color: var(--c-ink-3);
+}
+.tr-sp__main { flex: 1; min-width: 0; }
+.tr-sp__name {
+  font-family: var(--font-title);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  letter-spacing: 1.5px;
+  color: var(--c-ink);
+}
+.tr-sp__scene {
+  margin-top: 2px;
+  font-size: 10px;
+  color: var(--c-accent-2);
+  letter-spacing: 0.5px;
+}
+.tr-sp__desc {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+  line-height: var(--lh-base);
+}
+.tr-sp__pos { margin-top: var(--sp-2); display: flex; flex-wrap: wrap; }
+.tr-sp__positem {
+  font-size: 10px;
+  color: var(--c-ink-3);
+  border: 0.5px solid var(--c-line);
+  border-radius: var(--r-xs);
+  padding: 1px 5px;
+  margin: 0 4px 4px 0;
+}
+.tr-sp__arrow {
+  flex: 0 0 20px;
+  text-align: right;
+  font-size: var(--fs-xl);
+  color: var(--c-accent);
+}
+
+/* w- 辅助：桌面端 hover 反馈与指针 */
+.tr-sp { cursor: pointer; }
+.tr-sp:hover { background: var(--c-surface-2); }

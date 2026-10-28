@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="description" content="今日宜签 · 卜卦 / 星座 / 手相 / 塔罗 娱乐向工具（网页版，纯本地，仅供娱乐）">
+  <title>今日宜签 · 网页版</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/ui.css">
+  <link rel="stylesheet" href="css/pages/index.css" id="pageCssLink">
+</head>
+<body class="t-root">
+  <nav class="w-nav" id="wNav">
+    <button class="w-nav__back" id="wNavBack" type="button" aria-label="返回">‹</button>
+    <div class="w-nav__title" id="wNavTitle">今日宜签</div>
+  </nav>
+  <main id="app"></main>
+  <div class="w-ui" id="wUi"></div>
+
+  <!-- 运行时（wx 兼容层 / 路由 / 组件渲染器） -->
+  <script src="js/core.js"></script>
+
+  <!-- 数据与工具模块（由 utils/ 转写） -->
+  <script src="js/modules/asset-manifest.js"></script>
+  <script src="js/modules/data.js"></script>
+  <script src="js/modules/db/hexagrams.js"></script>
+  <script src="js/modules/db/poems.js"></script>
+  <script src="js/modules/db/tarot.js"></script>
+  <script src="js/modules/content.js"></script>
+  <script src="js/modules/hexagram.js"></script>
+  <script src="js/modules/theme.js"></script>
+  <script src="js/modules/links.js"></script>
+  <script src="js/modules/util.js"></script>
+  <script src="js/modules/store.js"></script>
+  <script src="js/modules/daily.js"></script>
+  <script src="js/modules/images.js"></script>
+  <script src="js/modules/sfx.js"></script>
+  <script src="js/modules/poster.js"></script>
+  <script src="js/modules/palm/config.js"></script>
+  <script src="js/modules/palm/quality.js"></script>
+  <script src="js/modules/palm/providers-mock.js"></script>
+  <script src="js/modules/palm/providers-cloud.js"></script>
+  <script src="js/modules/palm/vision.js"></script>
+
+  <!-- 页面（17 个，由 pages/* 与 package-tarot 转写） -->
+  <script src="js/pages/about.js"></script>
+  <script src="js/pages/daily-calendar.js"></script>
+  <script src="js/pages/daily-index.js"></script>
+  <script src="js/pages/divination-cast.js"></script>
+  <script src="js/pages/divination-glossary.js"></script>
+  <script src="js/pages/divination-index.js"></script>
+  <script src="js/pages/history.js"></script>
+  <script src="js/pages/index.js"></script>
+  <script src="js/pages/palm-index.js"></script>
+  <script src="js/pages/palm-lines.js"></script>
+  <script src="js/pages/palm-reading.js"></script>
+  <script src="js/pages/tarot-cards.js"></script>
+  <script src="js/pages/tarot-index.js"></script>
+  <script src="js/pages/tarot-reading.js"></script>
+  <script src="js/pages/zodiac-detail.js"></script>
+  <script src="js/pages/zodiac-index.js"></script>
+  <script src="js/pages/zodiac-match.js"></script>
+</body>
+</html>

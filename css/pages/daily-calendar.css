@@ -1,0 +1,182 @@
+/* 签文日历 —— 复用每日一签的暗色底与金色点缀
+   由 pages/daily/calendar.wxss 转换：rpx÷2=px；hover-class(--hover)→CSS :hover */
+.cal-head {
+  display: flex;
+  align-items: center;
+  padding: var(--sp-4) var(--sp-3);
+  background: var(--c-surface);
+  border: 0.5px solid var(--c-line);
+  border-radius: var(--radius-card);
+}
+.cal-head__item {
+  flex: 1;
+  text-align: center;
+}
+.cal-head__n {
+  font-family: var(--font-title);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+  line-height: 1.1;
+}
+.cal-head__t {
+  margin-top: 3px;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+}
+.cal-head__sep {
+  width: 0.5px;
+  height: 28px;
+  background: var(--c-line);
+}
+
+/* 月份切换 */
+.cal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--sp-4);
+  padding: 0 var(--sp-2);
+}
+.cal-bar__title {
+  font-family: var(--font-title);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--c-ink);
+  letter-spacing: 1px;
+}
+.cal-bar__btn {
+  width: 36px;
+  height: 36px;
+  line-height: 34px;
+  text-align: center;
+  font-size: var(--fs-xl);
+  color: var(--c-ink-2);
+  border: 0.5px solid var(--c-line);
+  border-radius: 50%;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.cal-bar__btn.is-off { opacity: .28; }
+.cal-bar__btn:hover { opacity: .6; }
+
+/* 星期表头 */
+.cal-week {
+  display: flex;
+  margin-top: var(--sp-3);
+  padding: 0 2px;
+}
+.cal-week__c {
+  flex: 1;
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  padding: var(--sp-1) 0;
+}
+
+/* 日期格 */
+.cal-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 2px;
+}
+.cal-cell {
+  width: 14.285%;
+  height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-sm);
+  transition: background var(--dur-fast) var(--ease-out);
+  position: relative;
+}
+.cal-cell.is-out { opacity: 0; pointer-events: none; }
+.cal-cell.is-has { background: var(--c-surface); }
+.cal-cell.is-today { border: 0.5px solid var(--c-accent); }
+.cal-cell:hover { opacity: .7; }
+.cal-cell__d {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+  line-height: 1.2;
+}
+.cal-cell.is-has .cal-cell__d { color: var(--c-ink); font-weight: var(--fw-bold); }
+.cal-cell.is-today .cal-cell__d { color: var(--c-accent); }
+.cal-cell__m {
+  margin-top: 2px;
+  font-size: var(--fs-sm);
+  line-height: 1.1;
+}
+.cal-cell__m--none { color: var(--c-ink-3); opacity: .5; }
+.cal-cell__dot {
+  position: absolute;
+  bottom: 7px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+/* 弹层 */
+.cal-mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .62);
+  display: flex;
+  align-items: flex-end;
+  z-index: 60;
+}
+.cal-pop {
+  width: 100%;
+  background: var(--c-bg-2);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  padding: var(--sp-5) var(--sp-4) calc(var(--sp-5) + var(--safe-bottom));
+}
+.cal-pop__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.cal-pop__date {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-3);
+}
+.cal-pop__lv {
+  font-family: var(--font-title);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+}
+.cal-pop__sub {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--c-ink-2);
+}
+.cal-pop__poem {
+  font-family: var(--font-title);
+  font-size: var(--fs-md);
+  color: var(--c-ink);
+  line-height: 1.9;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.cal-pop__row {
+  margin-top: var(--sp-3);
+  display: flex;
+  font-size: var(--fs-sm);
+}
+.cal-pop__k {
+  flex: 0 0 24px;
+  color: var(--c-accent);
+}
+.cal-pop__v {
+  flex: 1;
+  color: var(--c-ink-2);
+}
+.cal-pop__close {
+  margin-top: var(--sp-4);
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--c-ink-3);
+  padding: var(--sp-2) 0;
+}
