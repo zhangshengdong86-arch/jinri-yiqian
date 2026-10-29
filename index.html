@@ -9,6 +9,12 @@
   <link rel="icon" type="image/png" href="assets/brand/favicon.png">
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
   <meta name="theme-color" content="#0E1220">
+  <!-- PWA：可安装到手机桌面，全屏如 App -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="今日宜签">
   <!-- 分享预览（OG）：QQ / Qzone / Telegram / Twitter / 浏览器链接卡片 -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="今日宜签 · 四种方式，一次自观">
@@ -79,5 +85,13 @@
   <script src="js/pages/zodiac-match.js?v=20261028f"></script>
   <!-- 访问统计注入位：把 51.la / GoatCounter 的代码粘进 js/analytics.js 即生效 -->
   <script src="js/analytics.js?v=20261028f"></script>
+  <!-- PWA Service Worker 注册（离线兜底；file:// 下自动跳过） -->
+  <script>
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function () {});
+      });
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+{
+  "name": "今日宜签 · 四种方式，一次自观",
+  "short_name": "今日宜签",
+  "description": "卜卦 / 星座 / 手相 / 塔罗 + 每日一签，纯娱乐自我探索工具。结果仅供娱乐，不构成任何决策依据。",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0E1220",
+  "theme_color": "#0E1220",
+  "icons": [
+    {
+      "src": "assets/brand/pwa-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/brand/pwa-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/brand/pwa-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
