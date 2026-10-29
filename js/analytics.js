@@ -12,7 +12,12 @@
 (function () {
   'use strict';
   /* —— 统计代码粘贴区（开始） —— */
-
-
+  /* 51.la 官方 JS SDK（v6），APP ID: la215a64d6d36542f786d176fe93aa30ca */
+  var s = document.createElement('script');
+  s.charset = 'UTF-8';
+  s.id = 'LA_COLLECT';
+  s.src = 'https://sdk.51.la/js-sdk-pro.min.js?id=la215a64d6d36542f786d176fe93aa30ca';
+  s.async = true;
+  document.head.appendChild(s);
   /* —— 统计代码粘贴区（结束） —— */
 })();
