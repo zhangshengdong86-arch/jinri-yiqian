@@ -191,7 +191,7 @@
   }
 
   function swapCss(inst) {
-    var css = 'css/pages/' + ((inst && inst.cssFile) || 'index') + '.css?v=20261028e';
+    var css = 'css/pages/' + ((inst && inst.cssFile) || 'index') + '.css?v=20261028f';
     var link = document.getElementById('pageCssLink');
     if (!link) {
       link = document.createElement('link');
@@ -476,7 +476,7 @@
       var mode = { aspectFill: 'cover', aspectFit: 'contain', scaleToFill: 'fill', widthFix: 'contain' }[p.mode] || 'cover';
       var phClass = src ? 'ph ph--img' : 'ph ph--' + (p.variant || 'auto');
       var imgHtml = src
-        ? '<img class="ph__img" style="position:absolute;display:block;left:' + imgInset + ';top:' + imgInset +
+        ? '<img class="ph__img" loading="lazy" decoding="async" style="position:absolute;display:block;left:' + imgInset + ';top:' + imgInset +
           ';width:' + imgSize + ';height:' + imgSize + ';object-fit:' + mode + ';"' +
           ' src="' + esc(src) + '" alt=""' +
           ' onerror="if(this.parentNode)this.parentNode.className=this.parentNode.className.replace(\'ph--img\',\'ph--auto\')">'
