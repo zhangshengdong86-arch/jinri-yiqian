@@ -79,7 +79,7 @@ var MAP = {
 var PKG_BASE = { 'tarot/': 'assets/tarot/' }
 
 // 缓存刷新戳：整批调整图片后改这个值，强制全网 CDN / 浏览器缓存失效
-var ASSET_V = '?v=20261028e'
+var ASSET_V = '?v=20261028f'
 
 function resolve(key) {
   if (!key) return ''
