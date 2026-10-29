@@ -1,23 +1,23 @@
 /**
- * analytics.js · 访问统计注入位
+ * analytics.js · 访问统计（51.la 网站版 SDK）
  * ------------------------------------------------------------
- * 使用方法（二选一）：
- *   A. 51.la（国内速度快，推荐）：https://www.51.la 注册 → 新建应用 →
- *      把「JS 嵌入代码」整段粘贴到本文件末尾；
- *   B. GoatCounter（免备案、隐私友好）：https://www.goatcounter.com 注册 →
- *      把它的 <script> 标签内容粘贴到本文件末尾。
- * 粘贴后保存，双击 upload.bat 发布即可生效，无需改动任何其他文件。
- * 未粘贴前本文件为空操作，不影响网站任何功能。
+ * 应用：今日宜签 网页版（网站类型应用）
+ * 说明：SDK 脚本动态注入，加载完成后初始化；统计访客 UV/PV/来源/地域。
+ *       如需更换统计应用，只改下面 LA.init 的 id/ck 即可。
  */
 (function () {
   'use strict';
-  /* —— 统计代码粘贴区（开始） —— */
-  /* 51.la 官方 JS SDK（v6），APP ID: la215a64d6d36542f786d176fe93aa30ca */
   var s = document.createElement('script');
   s.charset = 'UTF-8';
   s.id = 'LA_COLLECT';
-  s.src = 'https://sdk.51.la/js-sdk-pro.min.js?id=la215a64d6d36542f786d176fe93aa30ca';
+  s.src = 'https://sdk.51.la/js-sdk-pro.min.js';
   s.async = true;
+  s.onload = function () {
+    try {
+      if (window.LA && typeof window.LA.init === 'function') {
+        window.LA.init({ id: '3ReswoNP8j4Tcr8F', ck: '3ReswoNP8j4Tcr8F' });
+      }
+    } catch (e) { /* 统计失败不影响网站功能 */ }
+  };
   document.head.appendChild(s);
-  /* —— 统计代码粘贴区（结束） —— */
 })();
